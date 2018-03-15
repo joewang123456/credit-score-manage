@@ -1,0 +1,104 @@
+/**图片预览**/
+.imageList{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    .imageBox{
+        display: flex;
+        position: relative;
+        .closewrap{
+            &:hover{
+                opacity: 0.9;
+                filter: opacity(90);
+            }
+            position: absolute;
+            top: -10px;
+            right: 5px;
+            width: 20px;
+            height: 20px;
+            background: gray;
+            border-radius: 10px;
+            opacity: 0.5;
+            filter: opacity(50);
+            &:before{
+                position: absolute;
+                content: '';
+                width: 50%;
+                height: 1px;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%) rotate(-45deg);
+                background: #DDDDDD;
+            }
+            &:after{
+                position: absolute;
+                content: '';
+                width: 50%;
+                height: 1px;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%) rotate(45deg);
+                background: #DDDDDD;
+            }
+        }
+
+        img{
+            border: 1px solid #DDDDDD;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            margin-right: 15px;
+            margin-bottom: 15px;
+        }
+    }
+}
+.imagePicker{
+    .picker{
+        padding: 0px 2px;
+    }
+    .tip{
+        padding: 0px 10px;
+        font-size: 10px;
+        color: #999999;
+    }
+}
+
+.previewImageBox{
+    position: relative;
+    // overflow: hidden;
+    .closeModal{
+        position: absolute;
+        top: -45px;
+        right: -30px;
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+        border: 1px solid white;
+        &:before{
+            position: absolute;
+            content: '';
+            width: 50%;
+            height: 1px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%) rotate(-45deg);
+            background: #DDDDDD;
+        }
+        &:after{
+            position: absolute;
+            content: '';
+            width: 50%;
+            height: 1px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%) rotate(45deg);
+            background: #DDDDDD;
+        }
+        &:hover{
+            cursor: pointer;
+            opacity: 1;
+            filter: opacity(100);
+        }
+    }
+}

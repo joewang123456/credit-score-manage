@@ -1,0 +1,9 @@
+export const SHOW_LOADING = Symbol('SHOW_LOADING');
+export const FETCH_FAILURE = Symbol('FETCH_FAILURE');
+export const FETCH_TABLE_LIST = Symbol('FETCH_TABLE_LIST');
+export const RECIEVE_RULE_LIST = Symbol('RECIEVE_RULE_LIST');
+export const RECIEVE_PUNISH_LIST = Symbol('RECIEVE_PUNISH_LIST');
+export const RECIEVE_BUSINESS_LIST = Symbol('RECIEVE_BUSINESS_LIST');
+export const UPDATE_FILTER = Symbol('UPDATE_FILTER');
+export const UPDATE_PAGE = Symbol('UPDATE_PAGE');
+export const RECIEVE_LIBRARY = Symbol('RECIEVE_LIBRARY');

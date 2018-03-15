@@ -1,0 +1,214 @@
+html,
+body{
+    background-color: #ffffff;
+    background-color: #ffffff !important;
+}
+
+.app{
+    padding-top:15px; 
+    font-size: 14px;
+    color: #333333;
+    background: white;
+    padding-bottom: 25px;
+    .navHeader{
+        display: block;
+        font-size: 20px;
+        color: #666666;
+        margin: 0px 15px 30px 15px;
+        border-bottom: 1px solid  #E8E8E8;
+    }
+    .clearfix:after{
+        content: '';
+        height: 0px;
+        display: block;
+        visibility: hidden;
+        clear: both;
+    }
+    .navBar{
+        & > div{
+            background: #F7F7F8;
+        }
+        font-size: 16px;
+        .leftBack{
+            color:  #F69079;
+        }
+    }
+    .tip{
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        color: #999999;
+    }
+    .content{
+        .myCard{
+            position: relative;
+            padding:0px 15px 15px 15px;
+            display: flex;
+            background-position:95% 50%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            align-items: center;
+            .left{
+                width: 60px;
+                height: 60px;
+                margin-right: 15px;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .right{
+                flex: 1;
+                color: #333333;
+                .top{
+                    position: relative;
+                    display: block;
+                    .iconWrap{
+                        position: absolute;
+                        top: 0px;
+                        left: 0px;
+                        .icon{
+                            border-radius: 2px;
+                            font-size: 0.6rem;
+                            color: #FFFFFF;
+                            padding: 0px 5px;
+                            line-height: 1.1rem;
+                            margin-top: 0.15rem;
+                        }
+                    }
+                    .iconAlbum{
+                        background: #F5A623;
+                    }
+                    .iconAnchor{
+                        background: #FC5832;
+                    }
+                    .iconArtical{
+                        background: #7ED321;
+                    }
+                }
+                .bottom{
+                    font-size: 12px;
+                    color: #999999;
+                }
+                .pc{
+                    font-size: 14px;
+                }
+            }
+            .appealStateIcon{
+                position: absolute;
+                top: 2px;
+                right: 25px;
+                height: 70px;
+            }
+        }
+        .selection{
+            padding: 0px 10px;
+            margin-top: 20px;
+            .header{
+                display: flex;
+                align-items: center;
+                .left{
+                    font-weight: bold;
+                }
+                .right{
+                    flex: 1;
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    a{
+                        font-size: 10px;
+                        color: #FC5832;
+                    }
+                }
+                .required{
+                    color:#DDDDDD;
+                    font-weight: normal;
+                }
+            }
+            .body{
+                margin-top: 15px;
+                .item{
+                    background: #F7F8FA;
+                    border-top: 1px solid #DDDDDD;
+                    border-bottom: 1px solid #DDDDDD;
+                    padding: 10px;
+                    font-size: 12px;
+                }
+                .guifan{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    font-size: 12px;
+                    color: #999999;
+                    a{
+                        color: #FC5832;
+                    }
+                }
+                .input{
+                    padding: 0px 5px;
+                }
+                .textArea{
+                    padding: 5px;
+                }
+            }
+        }
+        .row{
+            .body{
+                input{
+                    display: block;
+                    height: 32px;
+                }
+            }
+        }
+    }
+    .footer{
+        display: flex;
+        justify-content: center;
+        margin-top: 25px;
+        padding-bottom: 5px;
+        .submitBtn{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 36px;
+            width: 130px;
+            border-radius: 18px;
+        }
+        .abled{
+            background: #F86442;
+            color: white;
+        }
+        .disabled{
+            background: #D7D7D7;
+            color: #999999;
+        }
+    }
+}
+/**
+* 增加web端支持
+**/
+@media screen and (min-width: 768px) {
+    .app {
+        .content{
+            .selection{
+                .body{
+                    .item{
+                        border: none;
+                        border-radius: 3px;
+                        font-size: 14px;
+                    }
+                }
+            }
+            .row{
+                .body{
+                    input{
+                        max-width: 200px;
+                    }
+                }
+            }
+        }
+    }
+}

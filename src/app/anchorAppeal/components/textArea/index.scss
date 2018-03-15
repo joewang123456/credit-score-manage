@@ -1,0 +1,16 @@
+.wrap{
+    .textarea{
+        display: block;
+        width: 100%;
+        border: 1px solid rgb(234,234,234);
+        border-radius: 3px;
+        &:focus{
+            border-color: rgba(16, 142, 233, 0.7);
+            box-shadow: 0 0 4Px rgba(16, 142, 233, 0.5);
+        }
+    }
+    .count{
+        text-align: right;
+        color: #999999;
+    }
+}

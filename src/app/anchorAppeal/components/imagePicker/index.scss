@@ -1,0 +1,65 @@
+.imagePicker{
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    position: relative;
+    // flex-wrap: wrap;
+    .uploadForm{
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        margin-left: -1000px;
+    }
+    .previewImage{
+        display: flex;
+        flex: 1;
+        background: white;
+        .imageWrap{
+            display: flex;
+            position: relative;
+            img{
+                max-width: 100%;
+            }
+        }
+        .uploadBox{
+            position: relative;
+            display: block;
+            width: 60px;
+            height: 60px;
+            border: 2px dotted #DDDDDD;
+            border-radius: 2px;
+            background: white;
+            &:before{
+                position: absolute;
+                content: '';
+                width: 50%;
+                height: 1px;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%);
+                background: #DDDDDD;
+            }
+            &:after{
+                position: absolute;
+                content: '';
+                width: 50%;
+                height: 1px;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%) rotate(90deg);
+                background: #DDDDDD;
+            }
+        }
+    }
+    .tip{
+        margin-top: 5px;
+        font-size: 10px;
+        color: #999999;
+        p{
+            margin: 0px;
+        }
+    }
+    .error{
+        color: red;
+    }
+}

@@ -1,0 +1,30 @@
+.titleWrap{
+    overflow: hidden;
+    position: relative;
+    text-indent:2.5rem;
+    position:relative;
+    line-height:1.4rem;
+    height:2.8rem;
+    font-size: 14px;
+    overflow:hidden;
+    color: #333333;
+    word-break: break-all;
+    .hiddenSpan{
+        display: inline;
+        position: absolute;
+        top: -1000px;
+        left: -1000px;
+    }
+}
+.overflow{
+    &:after{
+        text-indent:0px;
+        content:"...";
+        font-weight:bold;
+        position:absolute;
+        bottom:0;
+        right:0;
+        padding:0px 10px 0px 45px;
+        background:url('./../../images/ellipsis_bg.png') repeat-y;
+    }
+}

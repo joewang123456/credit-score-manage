@@ -1,0 +1,19 @@
+.myInput{
+    display: block;
+    width: 100%;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    outline: none;
+    -webkit-appearance: none;
+    &:focus{
+        border-color: rgba(16, 142, 233, 0.7);
+        -webkit-box-shadow: 0 0 4Px rgba(16, 142, 233, 0.5);
+        box-shadow: 0 0 4Px rgba(16, 142, 233, 0.5); 
+        outline: none;   
+    }
+}
+.error{
+    color: red;
+    font-size: 0.6rem;
+    font-style: italic;
+}
