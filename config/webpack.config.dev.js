@@ -57,14 +57,14 @@ module.exports = {
       require.resolve('./polyfills'),
       paths.appSrc + "/app/anchorAppeal/index.js",
     ],
-    anchorIllegalRecord: [
-      require.resolve('./polyfills'),
-      paths.appSrc + "/app/anchorIllegalRecord/index.js",
-    ],
-    demoOne: [
-      require.resolve('./polyfills'),
-      paths.appSrc + "/app/demo/index.js",
-    ]
+    // anchorIllegalRecord: [
+    //   require.resolve('./polyfills'),
+    //   paths.appSrc + "/app/anchorIllegalRecord/index.js",
+    // ],
+    // demoOne: [
+    //   require.resolve('./polyfills'),
+    //   paths.appSrc + "/app/demo/index.js",
+    // ]
   },
   output: {
     // Add /* filename */ comments to generated require()s in the output.
@@ -312,18 +312,18 @@ module.exports = {
       template: paths.appHtml,
       filename: 'anchorAppeal.html',
     }),
-    new HtmlWebpackPlugin({
-      inject: true,
-      chunks: ["anchorIllegalRecord"],
-      template: paths.appHtml,
-      filename: 'anchorIllegalRecord.html',
-    }),
-    new HtmlWebpackPlugin({
-      inject: true,
-      chunks: ["demoOne"],
-      template: paths.appHtml,
-      filename: 'demoOne.html',
-    }),
+    // new HtmlWebpackPlugin({
+    //   inject: true,
+    //   chunks: ["anchorIllegalRecord"],
+    //   template: paths.appHtml,
+    //   filename: 'anchorIllegalRecord.html',
+    // }),
+    // new HtmlWebpackPlugin({
+    //   inject: true,
+    //   chunks: ["demoOne"],
+    //   template: paths.appHtml,
+    //   filename: 'demoOne.html',
+    // }),
     // Add module names to factory functions so they appear in browser profiler.
     new webpack.NamedModulesPlugin(),
     // Makes some environment variables available to the JS code, for example:
