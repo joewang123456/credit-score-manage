@@ -24,6 +24,7 @@ import {
 } from './../config';
 import * as style from './../style/index.scss';
 import { setInterval, setTimeout } from 'timers';
+import defaultIcon from './../images/default.png';
 
 class AnchorAppeal extends Component {
     constructor(props) {
@@ -37,7 +38,7 @@ class AnchorAppeal extends Component {
     }
     recordId = 0
     errorTip = '获取数据出错！'
-
+    inAppealTip = '仲裁进行中，请耐心等待哦~';
     componentDidMount() {
         this.recordId = (location.search.match(/recordId=([^&]*)/i) || [])[1] || 1;
         //获取申诉详情
@@ -72,12 +73,13 @@ class AnchorAppeal extends Component {
                 if (result.code === 200) {
                     //日期处理
                     let appeal = JSON.parse(result.msg);
-                    // if (!appeal.appeal) {
-                    //     appeal = { "appeal": "还哈哈哈哈哈哈哈哈哈哈哈哈", "businessId": 458647, "businessName": "16", "canAppeal": 1, "content": "测试申诉123(可申诉)", "deductedScore": 8, "isOverdue": 0, "message": "您好，您的声音《16》因【哼(测试下架私信)】，违反了《喜马拉雅平台规范》如需申诉，请于【2018-03-17 13:54:30】前提交申诉理由和凭证。申诉期间此声音将无法搜索到，也不会被推荐；若逾期不申诉或申诉失败将进行下架处理，且系统将记录您的违规行为，请遵守规则规范哦。", "pic": "http://fdfs.test.ximalaya.com/group1/M00/FE/14/wKgDplpEjN2AN-t6AAOE8eOUllU811.jpg", "punishment": "underCarriage", "result": null, "state": 2, "type": 3, "urls": "http://fdfs.test.ximalaya.com/group1/M00/CE/81/wKgD3lqouo-ASKZWAALFayaW0xc159.jpg", "violationCreateTime": 1521006871000 }
-                    // }
+                    //for test
+                    if (!appeal.appeal) {
+                        appeal = { "appeal": "红双喜", "businessId": 80338, "businessName": "a_006测试a_006测试a_006测试a_006测试a_006测试a_006测试a_006测试a_006测试a_006测试a_006测试a_006测试a_006测试", "canAppeal": 1, "content": "测试申诉123", "deductedScore": 2, "isOverdue": 0, "message": "您好，您因【测试申诉123】，违反了《喜马拉雅平台规范》如需申诉，请于【2018-03-22 10:43:55】前提交申诉理由和凭证。若逾期不申诉或申诉失败将进行【封号】处理，且系统将记录您的违规行为，请遵守规则规范哦。", "pic": "http://fdfs.test.ximalaya.com/group1/M01/CE/87/wKgD3lqpA8KAXsgpAACuUwkkbbQ079.jpg", "punishment": "banAccount", "result": null, "state": 2, "type": 1, "urls": "http://fdfs.test.ximalaya.com/group1/M00/CE/A9/wKgD3lqvaqOAeIEmAALFayaW0xc218.jpg", "violationCreateTime": 1521427436000 }
+                    }
 
                     appeal.violationCreateTime = util.DateFormat(appeal.violationCreateTime, 'YYYY-MM-dd hh:mm:ss');//日期格式转换
-                    appeal.punishmentStr = publishMap[appeal.punishment];
+                    appeal.punishmentStr = publishMap[appeal.punishment] + (appeal.deductedScore ? ('；扣除' + appeal.deductedScore + '分信用') : '');
                     this.setState({ illegalInfo: appeal, isShowLoad: false, errorMsg: null });
                 } else {
                     if (result.code === '501') {
@@ -117,7 +119,7 @@ class AnchorAppeal extends Component {
                 if (result.code === 200) {
                     Toast.success(result.msg, 2);
                     //提交成功,进入到申诉中状态
-                    this.setState({ illegalInfo: { ...this.state.illegalInfo, state: inAppeal, appeal: appealInfo.appeal, result: '仲裁进行中，请耐心等待哦~', urls: appealInfo.urls } })
+                    this.setState({ illegalInfo: { ...this.state.illegalInfo, state: inAppeal, appeal: appealInfo.appeal, result: this.inAppealTip, urls: appealInfo.urls } })
                 } else {
                     Toast.fail('提交失败!', 2);
                 }
@@ -189,8 +191,8 @@ class AnchorAppeal extends Component {
                             </div>
                             <div className={style.body}>
                                 {
-                                    <div className={style.item} style={state === inAppeal ? { textAlign: 'center', color: '#999999' } : {}}>
-                                        {result}
+                                    <div className={style.item} style={(state === inAppeal && util.getUserAgent() !== 'PC') ? { textAlign: 'center', color: '#999999' } : {}}>
+                                        {result || this.inAppealTip}
                                     </div>
                                 }
 
@@ -223,7 +225,7 @@ class AnchorAppeal extends Component {
                     <div className={style.content}>
                         <div className={style.myCard}>
                             <div className={style.left}>
-                                <img src={illegalInfo.pic} />
+                                <img src={illegalInfo.pic || defaultIcon} alt="" />
                             </div>
                             <div className={style.right}>
                                 <div className={style.top}>
@@ -238,7 +240,7 @@ class AnchorAppeal extends Component {
                                     违规时间：{illegalInfo.violationCreateTime}
                                 </div>
                             </div>
-                            <img className={style.appealStateIcon} src={appealIconMap[illegalInfo.state]} />
+                            <img className={style.appealStateIcon} src={appealIconMap[illegalInfo.state]} alt="" />
                         </div>
 
                         <div className={style.selection}>

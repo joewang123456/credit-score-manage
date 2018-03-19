@@ -47,7 +47,11 @@ class IllegalRecordFormComponent extends Component {
                 // 日期格式的转换，将moment转换成YYYY-MM-DD格式
                 const waitConvertFields = ['violationBTime', 'violationETime', 'appealBTime', 'appealETime'];
                 waitConvertFields.forEach((item) => {
-                    values[item] = values[item] ? moment(values[item]).toDate().getTime() : '';
+                    if (item === 'violationBTime' || item === 'appealBTime') {
+                        values[item] = values[item] ? moment(values[item]).hours(0).minutes(0).seconds(0).toDate().getTime() : '';
+                    } else {
+                        values[item] = values[item] ? moment(values[item]).hours(23).minutes(59).seconds(59).toDate().getTime() : '';
+                    }
                 });
                 for (let key in values) {
                     values[key] = values[key] === undefined ? '' : values[key];
@@ -80,11 +84,11 @@ class IllegalRecordFormComponent extends Component {
                 <Row>
                     <Col span={12}>
                         <Col span={11}>
-                            <FieldDate name="violationBTime" label="违规时间" defaultValue={startDate} form={this.props.form} formItemLayout={dateFormItemLayoutLeft} className={style.antFormItem} />
+                            <FieldDate name="violationBTime" label="违规时间" form={this.props.form} formItemLayout={dateFormItemLayoutLeft} className={style.antFormItem} />
                         </Col>
                         {/* <Col span={1}></Col> */}
                         <Col span={11} className={style.marginLeft}>
-                            <FieldDate name="violationETime" defaultValue={endDate} form={this.props.form} formItemLayout={dateFormItemLayoutRight} className={style.antFormItem} />
+                            <FieldDate name="violationETime" form={this.props.form} formItemLayout={dateFormItemLayoutRight} className={style.antFormItem} />
                         </Col>
                     </Col>
 
@@ -99,11 +103,11 @@ class IllegalRecordFormComponent extends Component {
 
                     <Col span={12}>
                         <Col span={11}>
-                            <FieldDate name="appealBTime" label="申诉时间" defaultValue={startDate} form={this.props.form} formItemLayout={dateFormItemLayoutLeft} className={style.antFormItem} />
+                            <FieldDate name="appealBTime" label="申诉时间" form={this.props.form} formItemLayout={dateFormItemLayoutLeft} className={style.antFormItem} />
                         </Col>
                         {/* <Col span={1}></Col> */}
                         <Col span={11} className={style.marginLeft}>
-                            <FieldDate name="appealETime" defaultValue={endDate} form={this.props.form} formItemLayout={dateFormItemLayoutRight} className={style.antFormItem} />
+                            <FieldDate name="appealETime" form={this.props.form} formItemLayout={dateFormItemLayoutRight} className={style.antFormItem} />
                         </Col>
                     </Col>
 

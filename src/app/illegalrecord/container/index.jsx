@@ -14,8 +14,8 @@ class IllegalRecordReport extends Component {
         super(props);
         //初始化日期控件初始值，默认范围一个月
         this.initDate = {
-            startDate: moment().subtract(1, 'months'),
-            endDate: moment()
+            startDate: '',
+            endDate: ''
         }
 
         this.renderOpts = {

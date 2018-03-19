@@ -2,10 +2,22 @@ import appealSuccessIcon from './images/appeal-success.png';
 import appealFailIcon from './images/appeal-fail.png';
 import appealingIcon from './images/appeal-ing.png';
 
-//图片上传服务器地址
-export const UPLOAD_SERVER = window.location.origin.indexOf("test") !== -1 ? 'http://ops.test.ximalaya.com' : 'http://ops.ximalaya.com';
 
-export const uploadImageServer = UPLOAD_SERVER + '/bgupload/dtres/backend/picture/upload';
+const getCookie = (key) => {
+    var reg = new RegExp("(^| )" + key + "=([^;]*)(;|$)");
+    var arr = document.cookie.match(reg);
+    if (!arr) {
+        return null;
+    }
+    return arr[2];
+}
+
+//图片上传服务器地址
+const isTest = window.location.origin.indexOf("test") > -1;
+export const cookie = isTest ? encodeURIComponent(getCookie('4&_token')) : encodeURIComponent(getCookie('1&_token'));
+export const UPLOAD_SERVER = isTest ? 'http://upload.test.ximalaya.com' : 'http://upload.ximalaya.com';
+
+export const uploadImageServer = UPLOAD_SERVER + '/dtres/picture/upload?token=' + cookie;
 //喜马拉雅平台规范链接地址
 export const xmlyRuleDocUrl = "http://www.ximalaya.com/center/announce/show?id=47";
 //专辑，声音，主播样式配置

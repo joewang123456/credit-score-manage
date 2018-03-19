@@ -4,6 +4,7 @@
  */
 import React, { Component } from 'react';
 import { Progress } from 'antd';
+import { Toast } from 'antd-mobile';
 import ImagePreview from './../../../common/components/imagePreview/index';
 import axios from 'axios';
 import * as style from './index.scss';
@@ -25,6 +26,17 @@ class ImagePicker extends Component {
     }
 
     uploadFile = () => {
+        if (this.fileInput.files.length > 1) {
+            const ErrorComponent = (props) => {
+                return (
+                    <div>
+                        {props.errorTip}
+                    </div>
+                );
+            }
+            Toast.fail(<ErrorComponent errorTip={'一次只能上传一张图片哦'} />, 2);
+            return;
+        }
         this.setState({ errorMsg: null, status: 'normal', loadPercent: 1 });
         const { uploadServer } = this.props;
         let formData = new FormData();//创建表单数据对象
@@ -40,7 +52,7 @@ class ImagePicker extends Component {
         axios({
             method: 'post',
             url: uploadServer,
-            withCredentials: false, // 禁止携带cookie
+            // withCredentials: false, // 禁止携带cookie
             data: formData,
             onUploadProgress: this.uploadProgress //进度
         })

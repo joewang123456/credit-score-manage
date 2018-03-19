@@ -50,8 +50,8 @@ const showLoading = (state = false, action) => {
 /**
  * 过滤
  */
-const nowSeconds = moment().toDate().getTime();
-const PreMonthSeconds = moment().subtract(1, 'months').toDate().getTime();
+const nowSeconds = moment().hours(0).minutes(0).seconds(0).toDate().getTime();
+const PreMonthSeconds = moment().hours(23).minutes(59).seconds(59).toDate().getTime();
 const initFilter = {
     anchorId: '',
     recordId: '',
