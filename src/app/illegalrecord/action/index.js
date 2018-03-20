@@ -184,6 +184,6 @@ const handleDetailData = (violationDetailModel = {}, keys = []) => {
     });
     //是否屏蔽
     violationDetailModel.publishDesc = violationDetailModel.deductedScore ? '扣除信用分' + violationDetailModel.deductedScore : '';//扣除信用积分
-    violationDetailModel.publishDesc += violationDetailModel.shieldAlbum ? '申诉期间推荐屏蔽' : '';//推荐屏蔽
+    // violationDetailModel.publishDesc += violationDetailModel.shieldAlbum ? '申诉期间推荐屏蔽' : '';//推荐屏蔽
     violationDetailModel.punishment ? violationDetailModel.publishDesc += "," + violationDetailModel.punishment.desc : '';//惩罚措施
 }

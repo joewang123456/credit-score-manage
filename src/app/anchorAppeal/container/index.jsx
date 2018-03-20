@@ -74,9 +74,9 @@ class AnchorAppeal extends Component {
                     //日期处理
                     let appeal = JSON.parse(result.msg);
                     //for test
-                    if (!appeal.appeal) {
-                        appeal = { "appeal": "红双喜", "businessId": 80338, "businessName": "a_006测试a_006测试a_006测试a_006测试a_006测试a_006测试a_006测试a_006测试a_006测试a_006测试a_006测试a_006测试", "canAppeal": 1, "content": "测试申诉123", "deductedScore": 2, "isOverdue": 0, "message": "您好，您因【测试申诉123】，违反了《喜马拉雅平台规范》如需申诉，请于【2018-03-22 10:43:55】前提交申诉理由和凭证。若逾期不申诉或申诉失败将进行【封号】处理，且系统将记录您的违规行为，请遵守规则规范哦。", "pic": "http://fdfs.test.ximalaya.com/group1/M01/CE/87/wKgD3lqpA8KAXsgpAACuUwkkbbQ079.jpg", "punishment": "banAccount", "result": null, "state": 2, "type": 1, "urls": "http://fdfs.test.ximalaya.com/group1/M00/CE/A9/wKgD3lqvaqOAeIEmAALFayaW0xc218.jpg", "violationCreateTime": 1521427436000 }
-                    }
+                    // if (!appeal.appeal) {
+                    //     appeal = { "appeal": "红双喜", "businessId": 80338, "businessName": "a_006测试a_006测试a_006测试a_006测试a_006测试a_006测试a_006测试a_006测试a_006测试a_006测试a_006测试a_006测试", "canAppeal": 1, "content": "测试申诉123", "deductedScore": 2, "isOverdue": 0, "message": "您好，您因【测试申诉123】，违反了《喜马拉雅平台规范》如需申诉，请于【2018-03-22 10:43:55】前提交申诉理由和凭证。若逾期不申诉或申诉失败将进行【封号】处理，且系统将记录您的违规行为，请遵守规则规范哦。", "pic": "", "punishment": "banAccount", "result": null, "state": 2, "type": 1, "urls": "http://fdfs.test.ximalaya.com/group1/M00/CE/A9/wKgD3lqvaqOAeIEmAALFayaW0xc218.jpg", "violationCreateTime": 1521427436000 }
+                    // }
 
                     appeal.violationCreateTime = util.DateFormat(appeal.violationCreateTime, 'YYYY-MM-dd hh:mm:ss');//日期格式转换
                     appeal.punishmentStr = publishMap[appeal.punishment] + (appeal.deductedScore ? ('；扣除' + appeal.deductedScore + '分信用') : '');
