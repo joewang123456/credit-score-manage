@@ -79,7 +79,9 @@ class AnchorAppeal extends Component {
                     // }
 
                     appeal.violationCreateTime = util.DateFormat(appeal.violationCreateTime, 'YYYY-MM-dd hh:mm:ss');//日期格式转换
-                    appeal.punishmentStr = publishMap[appeal.punishment] + (appeal.deductedScore ? ('；扣除' + appeal.deductedScore + '分信用') : '');
+                    //二期再加上扣分分值
+                    appeal.punishmentStr = publishMap[appeal.punishment];
+                    // appeal.punishmentStr = publishMap[appeal.punishment] + (appeal.deductedScore ? ('；扣除' + appeal.deductedScore + '分信用') : '');
                     this.setState({ illegalInfo: appeal, isShowLoad: false, errorMsg: null });
                 } else {
                     if (result.code === '501') {

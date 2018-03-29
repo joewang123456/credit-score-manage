@@ -2,7 +2,7 @@
 process.env.PUBLIC_URL = '//s1.xmcdn.com/lib/credit-score-manage/last/build/'  //---线上资源
 
 //测试环境发布时，应该保证版本号与后台的index.html , package.json版本号一致
-// process.env.PUBLIC_URL = '//static2.test.ximalaya.com/source/credit-score-manage/0.1.6/build/' //---测试资源
+// process.env.PUBLIC_URL = '//static2.test.ximalaya.com/source/credit-score-manage/0.1.9/build/' //---测试资源
 
 // Do this as the first thing so that any code reading it knows the right env.
 process.env.BABEL_ENV = 'production';
