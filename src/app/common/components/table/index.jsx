@@ -34,7 +34,7 @@ class MyTable extends Component {
                                                     {
                                                         opt.type === 'dialog' ?
                                                             <a href="javascript:;" onClick={opt.handler.bind(this, opt.params, record)}>{opt.text}</a>
-                                                            : <a href={(opt.domain || '') + opt.url.replace('/:' + id, '/' + record[id])}>{opt.text}</a>
+                                                            : <a href={(opt.domain || '') + opt.url.replace(new RegExp('(\\/)+\\:' + id), '/' + record[id])}>{opt.text}</a>
                                                     }
                                                     {/* <Divider type="vertical" /> */}
                                                 </span>
