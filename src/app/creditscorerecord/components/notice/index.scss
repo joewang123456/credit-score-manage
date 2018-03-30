@@ -1,0 +1,16 @@
+.noticeWrap{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    height: 35px;
+    line-height: 35px;
+    background: rgb(232, 232, 232);
+    z-index: 10;
+    a{
+        font-size: 14px;
+        text-decoration: none;
+        color: #FC5832;
+    }
+}

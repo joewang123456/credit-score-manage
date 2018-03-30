@@ -77,6 +77,14 @@ module.exports = {
     anchorAppeal: [
       require.resolve('./polyfills'),
       paths.appSrc + "/app/anchorAppeal/index.js",
+    ],
+    mycreditscore: [
+      require.resolve('./polyfills'),
+      paths.appSrc + "/app/mycreditscore/index.js",
+    ],
+    creditscorerecord: [
+      require.resolve('./polyfills'),
+      paths.appSrc + "/app/creditscorerecord/index.js",
     ]
 
     // common: ['react', 'react-dom', 'react-router', 'antd', 'antd-mobile', 'immutable', 'moment', 'react-modal',
@@ -344,6 +352,42 @@ module.exports = {
       chunks: ["anchorAppeal"],
       template: paths.appHtml,
       filename: 'anchorAppeal.html',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
+    }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      chunks: ["mycreditscore"],
+      template: paths.appHtml,
+      filename: 'mycreditscore.html',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
+    }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      chunks: ["creditscorerecord"],
+      template: paths.appHtml,
+      filename: 'creditscorerecord.html',
       minify: {
         removeComments: true,
         collapseWhitespace: true,

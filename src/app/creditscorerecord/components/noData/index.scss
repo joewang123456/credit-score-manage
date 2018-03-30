@@ -1,0 +1,25 @@
+.noDataWrap{
+    .imageWrap{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 20px;
+        img{
+            width: 100px;
+            height: 100px;
+        }
+    }
+    .tip{
+        text-align: center;
+        color: #999999;
+    }
+    .ruleLink{
+        margin-top: 20px;
+        text-align: center;
+        a{
+            text-decoration: none;
+            color: rgb(239, 60, 23);
+            font-weight: bold;
+        }
+    }
+}

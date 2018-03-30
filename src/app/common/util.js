@@ -98,3 +98,50 @@ const utils = {
 }
 
 export default utils;
+
+
+//测试使用
+export const filterByStatus = (status) => (list) => {
+    let result = list.filter((item) => {
+        if (status === 'all') {
+            return true;
+        } else {
+            return item.status === status;
+        }
+    });
+    return result;
+}
+
+export const setTotalCount = (data) => (totalCount) => {
+    data.totalCount = totalCount;
+    return data.list;
+}
+
+export const filterByPage = (currPage, pageSize, total) => (list = []) => {
+    const start = (currPage - 1) * pageSize
+    const end = (currPage * pageSize - 1) > list.length ? list.length : (currPage * pageSize - 1);
+    let result = list.filter((item, index) => {
+        return index >= start && index <= end;
+    });
+    return result;
+}
+
+export const getSomeKeys = (keys) => (obj) => {
+    let result = {}
+    for (var i = 0; i < keys.length; i++) {
+        result[keys[i]] = obj[keys[i]];
+    }
+    return result;
+}
+
+const pipe = (f1, f2) => (...args) => f1.call(this, f2.apply(this, args));
+export const compose = (...args) => args.reduce(pipe, args.shift());
+
+export const setCurrPage = (data) => (currPage) => {
+    data.currPage = currPage;
+    return data.list;
+}
+
+export const setState = (context) => (args) => {
+    context.setState.call(context, Object.assign(context.state, { ...args }));
+}

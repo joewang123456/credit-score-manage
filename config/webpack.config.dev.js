@@ -57,6 +57,14 @@ module.exports = {
       require.resolve('./polyfills'),
       paths.appSrc + "/app/anchorAppeal/index.js",
     ],
+    mycreditscore: [
+      require.resolve('./polyfills'),
+      paths.appSrc + "/app/mycreditscore/index.js",
+    ],
+    creditscorerecord: [
+      require.resolve('./polyfills'),
+      paths.appSrc + "/app/creditscorerecord/index.js",
+    ]
     // anchorIllegalRecord: [
     //   require.resolve('./polyfills'),
     //   paths.appSrc + "/app/anchorIllegalRecord/index.js",
@@ -311,6 +319,18 @@ module.exports = {
       chunks: ["anchorAppeal"],
       template: paths.appHtml,
       filename: 'anchorAppeal.html',
+    }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      chunks: ["mycreditscore"],
+      template: paths.appHtml,
+      filename: 'mycreditscore.html',
+    }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      chunks: ["creditscorerecord"],
+      template: paths.appHtml,
+      filename: 'creditscorerecord.html',
     }),
     // new HtmlWebpackPlugin({
     //   inject: true,
