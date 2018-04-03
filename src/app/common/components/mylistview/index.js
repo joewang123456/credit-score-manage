@@ -95,17 +95,16 @@ class MyListView extends Component {
     }
 
     render() {
-        console.log(1111);
         const { dataSource, isLoading, hasMore } = this.state;
         const { list, pageSize, renderRow, Separator, className, errorMsg } = this.props;
-        const footerText = isLoading ? 'Loading...' : (errorMsg ? errorMsg : (hasMore ? '没有更多啦~00~' : ''));
+        const footerText = isLoading ? 'Loading...' : (errorMsg ? errorMsg : (hasMore ? '没有更多啦~00~' : '上拉查看更多'));
         return (
             <div className={className}>
                 <ListView
                     key={0}
                     ref={el => { this.lv = el; }}
                     dataSource={this.state.dataSource}
-                    renderFooter={() => (<div style={{ height: '20px', textAlign: 'center' }}>
+                    renderFooter={() => (<div style={{ height: '20px', textAlign: 'center', marginBottom: "20px" }}>
                         {
                             footerText
                         }
@@ -120,9 +119,9 @@ class MyListView extends Component {
                     pageSize={pageSize}
                     initialListSize={pageSize}
                     onEndReached={this.onEndReached}
-                    onEndReachedThreshold={10}
+                    onEndReachedThreshold={1}
                     onScroll={this.onScroll}
-                    scrollEventThrottle={1}
+                    scrollEventThrottle={15}
                 />
             </div>
         );

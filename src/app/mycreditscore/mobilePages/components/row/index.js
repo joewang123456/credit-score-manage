@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Icon } from 'antd-mobile';
-import { typeMap } from './../../config';
+import { typeMap } from './../../../config';
 import * as style from './index.scss';
 
 class CardItem extends Component {

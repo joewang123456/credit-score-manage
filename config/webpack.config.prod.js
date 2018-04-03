@@ -78,13 +78,21 @@ module.exports = {
       require.resolve('./polyfills'),
       paths.appSrc + "/app/anchorAppeal/index.js",
     ],
-    mycreditscore: [
+    mycreditscoreforweb: [
       require.resolve('./polyfills'),
-      paths.appSrc + "/app/mycreditscore/index.js",
+      paths.appSrc + "/app/mycreditscore/webPages/index.js",
     ],
-    creditscorerecord: [
+    mycreditscoreformobile: [
       require.resolve('./polyfills'),
-      paths.appSrc + "/app/creditscorerecord/index.js",
+      paths.appSrc + "/app/mycreditscore/mobilePages/index.js",
+    ],
+    creditscorerecordformobile: [
+      require.resolve('./polyfills'),
+      paths.appSrc + "/app/creditscorerecord/mobilePages/index.js",
+    ],
+    creditscorerecordforweb: [
+      require.resolve('./polyfills'),
+      paths.appSrc + "/app/creditscorerecord/webPages/index.js",
     ]
 
     // common: ['react', 'react-dom', 'react-router', 'antd', 'antd-mobile', 'immutable', 'moment', 'react-modal',
@@ -367,9 +375,9 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       inject: true,
-      chunks: ["mycreditscore"],
+      chunks: ["mycreditscoreforweb"],
       template: paths.appHtml,
-      filename: 'mycreditscore.html',
+      filename: 'mycreditscoreforweb.html',
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -385,9 +393,45 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       inject: true,
-      chunks: ["creditscorerecord"],
+      chunks: ["mycreditscoreformobile"],
       template: paths.appHtml,
-      filename: 'creditscorerecord.html',
+      filename: 'mycreditscoreformobile.html',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
+    }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      chunks: ["creditscorerecordforweb"],
+      template: paths.appHtml,
+      filename: 'creditscorerecordforweb.html',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
+    }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      chunks: ["creditscorerecordformobile"],
+      template: paths.appHtml,
+      filename: 'creditscorerecordformobile.html',
       minify: {
         removeComments: true,
         collapseWhitespace: true,

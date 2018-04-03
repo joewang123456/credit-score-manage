@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Tabs, Badge } from 'antd-mobile';
 import axios from 'axios';
-import MyListView from './../../common/components/mylistview';
+import MyListView from './../../../common/components/mylistview';
 import renderRow from './../components/row';
 import { StickyContainer, Sticky } from 'react-sticky';
 import NoData from './../components/noData';
-import ErrorMsg from './../../common/components/error';
+import ErrorMsg from './../../../common/components/error';
 import Separator from './../components/separator';
 import * as style from './index.scss';
-import pic from './../images/default.png';
+import pic from './../../images/default.png';
 import { setTimeout } from 'timers';
-import { filterByStatus, setTotalCount, filterByPage, getSomeKeys, compose, setCurrPage, setState } from './../../common/util';
+import { filterByStatus, setTotalCount, filterByPage, getSomeKeys, compose, setCurrPage, setState } from './../../../common/util';
 
 const tabs = [
     { title: <Badge >全部</Badge>, status: 'all' },
@@ -31,7 +31,7 @@ class IllegalRecord extends Component {
     delayTime = 1000
     isSticky = false
     tabHeight = 44.3
-    pageSize = Math.ceil((window.innerHeight - this.tabHeight) / 80);//计算分页大小，此处针对于不同的屏幕高度，pc端网页的高度，动态计算pageSize大小，使页数正好填满一个页面
+    pageSize = 4 || Math.ceil((window.innerHeight - this.tabHeight) / 80);//计算分页大小，此处针对于不同的屏幕高度，pc端网页的高度，动态计算pageSize大小，使页数正好填满一个页面
     /**
      * 切换tab页
      */
@@ -42,12 +42,12 @@ class IllegalRecord extends Component {
 
     onPageChange = (currPage = 1, pageSize = this.pageSize) => {
         const promise = new Promise((resolve, reject) => {
-            axios.get('./../data.json').then((res) => {
+            axios.get('./../../data.json').then((res) => {
                 if (res.data.success) {
                     let data = res.data;
                     //模拟分页处理
                     data.list = compose(filterByStatus(this.state.status), setCurrPage(data))(currPage);
-                    data.list = compose(filterByPage(data.currPage, data.pageSize, data.totalCount), setTotalCount(data))(data.list.length);
+                    data.list = compose(filterByPage(data.currPage, (pageSize || data.pageSize), data.totalCount), setTotalCount(data))(data.list.length);
                     const properties = getSomeKeys(['currPage', 'pageSize', 'totalCount', 'list', 'errorMsg'])(data);
 
                     setTimeout(() => {

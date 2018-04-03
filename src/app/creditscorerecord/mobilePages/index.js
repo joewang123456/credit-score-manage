@@ -6,14 +6,14 @@ import ReactDOM from 'react-dom';
 import { PullToRefresh, ListView } from 'antd-mobile';
 import axios from 'axios';
 import Notice from './components/notice';
-import MyListView from './../common/components/mylistview';
+import MyListView from './../../common/components/mylistview';
 import renderRow from './components/row';
-import ErrorMsg from './../common/components/error';
+import ErrorMsg from './../../common/components/error';
 import Separator from './components/separator';
 import NoData from './components/noData';
-import { filterByStatus, setTotalCount, filterByPage, getSomeKeys, compose, setCurrPage, setState } from './../common/util';
+import { filterByStatus, setTotalCount, filterByPage, getSomeKeys, compose, setCurrPage, setState } from './../../common/util';
 import * as style from './index.scss';
-class IllegalRecord extends Component {
+class IllegalRecordMobile extends Component {
     state = {
         loading: true,
         errorMsg: null,
@@ -29,7 +29,7 @@ class IllegalRecord extends Component {
     }
     onPageChange = (currPage = 1, pageSize = this.pageSize) => {
         const promise = new Promise((resolve, reject) => {
-            axios.get('./../data2.json').then((res) => {
+            axios.get('./../../data2.json').then((res) => {
                 if (res.data.success) {
                     let data = res.data;
                     //模拟分页处理
@@ -37,13 +37,13 @@ class IllegalRecord extends Component {
                     data.list = compose(filterByPage(data.currPage, data.pageSize, data.totalCount), setTotalCount(data))(data.list.length);
                     const properties = getSomeKeys(['currPage', 'pageSize', 'totalCount', 'list', 'errorMsg', 'showNotice'])(data);
                     setTimeout(() => {
-                        if (this.count % 2 !== 0) {
-                            this.count++;
-                            resolve(properties);
-                        } else {
-                            this.count++;
-                            reject('数据请求出错');
-                        }
+                        // if (this.count % 2 !== 0) {
+                        // this.count++;
+                        resolve(properties);
+                        // } else {
+                        //     this.count++;
+                        //     reject('数据请求出错');
+                        // }
                     }, 1000);
                 }
             }).catch(() => {
@@ -79,5 +79,5 @@ class IllegalRecord extends Component {
 }
 
 ReactDOM.render(
-    <IllegalRecord />, document.getElementById('root')
+    <IllegalRecordMobile />, document.getElementById('root')
 );

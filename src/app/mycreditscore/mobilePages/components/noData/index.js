@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as style from './index.scss';
-import pic from './../../images/default.png';
+import pic from './../../../images/default.png';
 export default () => {
     return (
         <div className={style.noDataWrap}>

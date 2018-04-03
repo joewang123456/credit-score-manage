@@ -90,8 +90,10 @@ module.exports = function (proxy, allowedHost) {
         { from: /^\/test\/illegalRecord/, to: config.output.publicPath + '/illegalrecord.html' },
         { from: /^\/test\/creditScore/, to: config.output.publicPath + '/creditscore.html' },
         { from: /^\/test\/anchorAppeal/, to: config.output.publicPath + '/anchorAppeal.html' },
-        { from: /^\/test\/mycreditscore/, to: config.output.publicPath + '/mycreditscore.html' },
-        { from: /^\/test\/creditscorerecord/, to: config.output.publicPath + '/creditscorerecord.html' }
+        { from: /^\/test\/mycreditscore\/web/, to: config.output.publicPath + '/mycreditscoreforweb.html' },
+        { from: /^\/test\/mycreditscore\/mobile/, to: config.output.publicPath + '/mycreditscoreformobile.html' },
+        { from: /^\/test\/creditscorerecord\/web/, to: config.output.publicPath + '/creditscorerecordforweb.html' },
+        { from: /^\/test\/creditscorerecord\/mobile/, to: config.output.publicPath + '/creditscorerecordformobile.html' }
       ]
     },
     public: allowedHost,
