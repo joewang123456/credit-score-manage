@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Icon } from 'antd-mobile';
+import utils from './../../../../common/util';
 import * as style from './index.scss';
 
 class Row extends Component {
@@ -21,21 +22,18 @@ class Row extends Component {
             <div className={style.cardItem + " " + (heightLight ? style.highlight : '')}
                 onTouchStart={this.setHighLight}
                 onTouchEnd={this.removeHighLight}
-                onMouseOver={this.setHighLight}
-                onMouseOut={this.removeHighLight}
-                onTouchCancel={this.removeHighLight}
             >
                 <div className={style.content}>
                     <div className={style.top}>
                         <div className={style.titleWrap}>
-                            <div className={style.title}>{data.title}</div>
+                            <div className={style.title}>{data.content}</div>
                         </div>
                     </div>
-                    <div className={style.bottom}>{data.time}</div>
+                    <div className={style.bottom}>{'违规时间：' + utils.DateFormat(data.time, 'YYYY-MM-dd hh:mm:ss')}</div>
                 </div>
                 <div className={style.link}>
                     <a href="#">
-                        {data.score}
+                        {data.deltaScore}
                         <Icon type='right' />
                     </a>
                 </div>

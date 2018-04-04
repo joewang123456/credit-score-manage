@@ -81,6 +81,11 @@
       "target": "http://m.test.ximalaya.com/",
       "changeOrigin": true,
       "cookieDomainRewrite": "m.test.ximalaya.com"
+    },
+    "/credit-web": {
+      "target": "http://localhost:3002/",
+      "changeOrigin": true,
+      "cookieDomainRewrite": "http://localhost:3002"
     }
   },
   "jest": {

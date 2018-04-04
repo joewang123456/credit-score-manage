@@ -1,11 +1,11 @@
 
-$height:70px;
-$width:50px;
+$height:90px;
+$width:60px;
 $border:0px solid gary;
 .cardItem{
     height: $height;
     display: flex;
-    padding: 10px;
+    padding: 15px;
     .imageWrap{
         width: $width;
         border: 1px solid rgb(230, 222, 222);
@@ -16,7 +16,7 @@ $border:0px solid gary;
         }
     }
     .content{
-        margin: 0px 15px 0px 10px;
+        margin: 5px 15px 5px 10px;
         display: flex;
         flex: 1;
         justify-content: space-between;
@@ -26,11 +26,14 @@ $border:0px solid gary;
             display: flex;
             .type{
                 border-radius: 2px;
-                font-size: 0.6rem;
+                height: 16px;
+                font-size: 12px;
                 color: #FFFFFF;
-                text-align: center;
-                border: $border;
-                padding: 2px 3px;
+                padding: 0px 3px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                align-self: center;
             }
             .iconAlbum{
                 background: #F5A623;
@@ -64,7 +67,7 @@ $border:0px solid gary;
     }
     .link{
         display: flex;
-        width: $width + 20px;
+        width: $width + 35px;
         display: flex;
         border: $border;
         justify-content: center;

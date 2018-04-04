@@ -3,8 +3,24 @@ import axios from 'axios';
 import * as style from './index.scss';
 
 class ScorePanel extends Component {
+
+    state = {
+        score: '--'
+    }
+
+    componentWillMount() {
+        const anchorId = (location.search.match(/anchorId=([^&]*)/i) || [])[1] || 1;
+        axios.get('/credit-web/anchorCredit/getCreditScore?anchorId=' + anchorId).then((res) => {
+            if (res.data.success) {
+                this.setState({ score: res.data.score });
+            }
+        }).catch(() => {
+
+        })
+    }
+
     render() {
-        const { score = 80 } = this.props;
+        const { score } = this.state;
         return (
             <div className={style.scoreWrap}>
                 <div className={style.header}>

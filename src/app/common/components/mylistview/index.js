@@ -8,12 +8,12 @@ import Loading from './../loading';
 const widthHandle = curry((HOCName) => (WrapComponent) => class extends WrapComponent {
     static displayName = HOCName;
     render() {
-        const { currPage, list, loading, errorMsg, ErrorMsg, NoData } = this.props;
+        const { pageNo, list, loading, errorMsg, ErrorMsg, NoData } = this.props;
         if (loading) {//加载中
             return <Loading loading={loading} />
-        } else if (errorMsg && currPage === 1) {//出错处理
+        } else if (errorMsg) {//出错处理
             return <ErrorMsg errorMsg={errorMsg} />
-        } else if (currPage === 1 && (list || []).length == 0) {//没有数据
+        } else if (pageNo === 1 && (list || []).length == 0) {//没有数据
             return <NoData />
         } else {//正常加载数据
             return super.render();
@@ -43,7 +43,6 @@ class MyListView extends Component {
     }
 
     rData = []
-    addLock = true
 
     componentDidUpdate() {
         document.body.style.overflow = 'auto';
@@ -59,8 +58,6 @@ class MyListView extends Component {
             } else {
                 this.rData = [...list];
             }
-        } else {
-            this.addLock = false;
         }
         setState(this)({
             dataSource: this.state.dataSource.cloneWithRows(this.rData),
@@ -77,34 +74,27 @@ class MyListView extends Component {
     };
 
     onEndReached = (event) => {
-        const { totalCount, pageSize, currPage, errorMsg } = this.props;
-        //已经没有更多
+        const { totalCount, pageSize, pageNo, errorMsg } = this.props;
+        //已经没有更多或者正在加载中
         if (this.state.isLoading || this.state.hasMore) {
             return;
         }
-        setState(this)({ isLoading: true, append: true });
-        this.props.onPageChange(errorMsg ? currPage : currPage + 1);
+        this.setState({ isLoading: true, append: true });
+        //此处对于每次下拉加载更多延迟500毫秒，否则下拉过快，导致连续请求
+        setTimeout(() => {
+            this.props.onPageChange(errorMsg ? pageNo : pageNo + 1);
+        }, 500);
     };
-
-    onScroll = () => {
-        const { errorMsg } = this.props;
-        if (!this.addLock && errorMsg) {
-            this.addLock = true;
-            this.onEndReached();
-        }
-    }
 
     render() {
         const { dataSource, isLoading, hasMore } = this.state;
-        const { list, pageSize, renderRow, Separator, className, errorMsg } = this.props;
-        const footerText = isLoading ? 'Loading...' : (errorMsg ? errorMsg : (hasMore ? '没有更多啦~00~' : '上拉查看更多'));
+        const { list, pageSize, pageNo, renderRow, Separator, className, errorMsg } = this.props;
+        const footerText = isLoading ? 'Loading...' : (errorMsg ? errorMsg : (hasMore ? (pageNo > 1 ? '没有更多啦~00~' : '') : '上拉查看更多'));
         return (
             <div className={className}>
                 <ListView
-                    key={0}
-                    ref={el => { this.lv = el; }}
                     dataSource={this.state.dataSource}
-                    renderFooter={() => (<div style={{ height: '20px', textAlign: 'center', marginBottom: "20px" }}>
+                    renderFooter={() => (<div style={{ textAlign: 'center' }}>
                         {
                             footerText
                         }
@@ -116,12 +106,10 @@ class MyListView extends Component {
                         refreshing={this.state.refreshing}
                         onRefresh={this.onRefresh}
                     />}
-                    pageSize={pageSize}
                     initialListSize={pageSize}
+                    pageSize={pageSize}
                     onEndReached={this.onEndReached}
-                    onEndReachedThreshold={1}
-                    onScroll={this.onScroll}
-                    scrollEventThrottle={15}
+                    onEndReachedThreshold={100}
                 />
             </div>
         );

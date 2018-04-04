@@ -9,7 +9,7 @@ class MyCreditScore extends Component {
 
     render() {
         return (
-            <div>
+            <div style={{ backgroundColor: 'rgb(232, 232, 232)' }}>
                 <ScorePanel />
                 <IllegalRecord />
             </div>

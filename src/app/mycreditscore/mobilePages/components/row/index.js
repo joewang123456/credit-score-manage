@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Icon } from 'antd-mobile';
-import { typeMap } from './../../../config';
+import { typeMap, illegalStateMap } from './../../../config';
+import utils from './../../../../common/util';
 import * as style from './index.scss';
 
 class CardItem extends Component {
@@ -22,25 +23,23 @@ class CardItem extends Component {
             <div className={style.cardItem + " " + (heightLight ? style.highlight : '')}
                 onTouchStart={this.setHighLight}
                 onTouchEnd={this.removeHighLight}
-                onMouseOver={this.setHighLight}
-                onMouseOut={this.removeHighLight}
                 onTouchCancel={this.removeHighLight}
             >
                 <div className={style.imageWrap}>
-                    <img src={data.pic} alt="" />
+                    <img src={data.business_pic} alt="" />
                 </div>
                 <div className={style.content}>
                     <div className={style.top}>
                         <div className={style.type + " " + style[[typeMap[data.type]['style']]]}>{[typeMap[data.type]['label']]}</div>
                         <div className={style.titleWrap}>
-                            <div className={style.title}>{data.title}</div>
+                            <div className={style.title}>{data.businessName}</div>
                         </div>
                     </div>
-                    <div className={style.bottom}>{data.time}</div>
+                    <div className={style.bottom}>{utils.DateFormat(data.violationTime, 'YYYY-MM-dd hh:mm:ss')}</div>
                 </div>
                 <div className={style.link}>
                     <a href="#">
-                        {data.status}
+                        {illegalStateMap[data.state]}
                         <Icon type='right' color={heightLight ? '#fc430b' : '#999999'} />
                     </a>
                 </div>
