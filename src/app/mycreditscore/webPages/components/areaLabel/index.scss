@@ -1,0 +1,27 @@
+.areaLabel{
+    position: relative;
+    display: flex;
+    font-size: 16px;
+    padding: 0 10px;
+    margin: 15px 0;
+    &>div{
+        flex: 1;
+    }
+    .labelLink {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        &>a{
+            color: #FC5832;
+        }
+    }
+
+    .leftIcon{
+        border-radius: 15px;
+        width: 4px;
+        height: 100%;
+        background-color: #FC5832;
+        position: absolute;
+        margin-left: -10px;
+    }
+}

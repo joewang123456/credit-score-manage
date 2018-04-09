@@ -1,0 +1,97 @@
+.zhiBoWebList{
+    margin-bottom: 20px;
+    .listHeader{
+        padding: 10px;
+    }
+    .loadingStyle{
+        height: 50px;
+        text-align: center;
+        position: absolute;
+        top: 130px;
+        width: 100%;
+    }
+    table{
+        width: 100%;
+
+        th{
+            color: #999;
+            font-size: 14px;
+            padding: 10px;
+            font-weight: 400;
+            border-bottom: 1px solid #e8e8e8;
+            text-align: center;
+            &:first-child{
+                padding-left: 25px;
+                text-align: left;
+                width: 60%;
+            }
+        }
+        td{
+            border-bottom: 1px solid #e8e8e8;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 14px;
+            &:first-child{
+                text-align: left;
+            }
+
+            a{
+                padding: 6px 12px;
+                border: 1px solid #E8E8E8;
+                border-radius: 4px;
+                color: #999;
+            }
+
+            img{
+                float: left;
+                width: 60px;
+                height: 60px;
+            }
+            div{
+                margin-left: 10px;
+                float: left;
+                p{
+                    margin: 10px 0 0;
+                    color: #333;
+                    font-size: 14px;
+                    &>span{
+                        font-size: 12px;
+                        //background-color: #FDD25B;
+                        color: #fff;
+                        padding: 2px 5px;
+                        margin-right: 10px;
+                        border-radius: 4px;
+                    }
+
+                    .iconAlbum{
+                        background: #F5A623;
+                    }
+                    .iconAnchor{
+                        background: #FC5832;
+                    }
+                    .iconArtical{
+                        background: #7ED321;
+                    }
+                }
+
+                .appealTime{
+                    color: #999;
+                    font-size: 12px;
+                }
+            }
+
+        }
+        
+        .APPEAL_WAITING{
+            color: #FF9070;
+        }
+
+        .APPEALING{
+            color: #7ED321;
+        }
+
+        .APPEAL_FAIL, .APPEAL_NOT{
+            color: #999;
+        }
+    }
+}

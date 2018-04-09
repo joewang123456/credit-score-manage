@@ -1,0 +1,15 @@
+.breadcrumb{
+  border-bottom: 1px solid #E8E8E8;
+  padding:15px 0;
+  font-size: 20px;
+  color: #666666;
+  a{
+    color: #666666;
+  }
+  .active{
+    color: #FC5832;
+  }
+  .separator{
+    margin-left: 5px;
+  }
+}
